@@ -91,8 +91,12 @@ deliberately not optimised rather than optimised approximately.
 Results
 +++++++
 
-Keys are 1.4x to 6.2x faster to build, depending on the corpus (non-ASCII
-input is unchanged by design and excluded from that range):
+Across the 24 ASCII dataset/algorithm cells the per-cell median speedup runs
+from 1.41x to 6.24x, with a median cell of 1.75x. The bottom of that range sits
+close to this machine's noise floor, so the reliable claim is "roughly 1.5x to
+6x depending on the corpus". The non-ASCII corpus is unchanged by design and is
+excluded from the range - see the methodology note below for why it is reported
+as noise rather than as a regression.
 
 .. image:: assets/speedup_by_corpus.png
     :alt: Key-construction speedup by corpus and algorithm
@@ -178,10 +182,16 @@ dispatch so every arm pays the same per-call overhead:
       - 1.75x
     * - then skip NFD on ASCII
       - ``unicodedata.normalize`` on input that cannot be affected by it
-      - +1.14x
+      - 1.14x
     * - then reduce the regex to ASCII
       - the Unicode numeral alternative, dead for ASCII input
-      - +1.13x
+      - 1.13x
+
+Those two follow-on steps are each only about 1.1x on their own adjacent pair,
+and 1.25x taken together, so the fused loop is doing essentially all of the
+work; the pair contributes roughly a quarter on top of it. Both steps are kept
+because they are free at runtime (an ``isascii()`` test and a precomputed
+pattern), not because each is individually large.
 
 The shipped code matches the third variant (ratio 0.99, i.e. no measurable
 difference), so nothing beyond those three mechanisms is contributing - and
@@ -202,9 +212,13 @@ green run means something.
 
 **Methodology.** ``bench/harness.py`` measures with interleaved A/B rounds and
 per-round ratios, each arm calibrated to the same wall time. An A/A control
-(two byte-identical trees) puts the noise floor at a median ratio of 1.0013,
-range 0.93-1.10 - which is why the non-ASCII row above is reported as noise
-rather than as a regression.
+(two byte-identical trees) is what decides how much of a difference is real:
+across three runs of the 28 dataset/config cells its *median* ratio was 1.006,
+1.010 and 0.990, so there is no systematic bias between the two arms, but
+individual cells wander as far as 0.71x-1.53x. The per-cell median is therefore
+only trusted when it clears roughly 1.5x, which is why the non-ASCII row above
+is reported as noise rather than as a regression. Treat the wide per-cell tail
+as the reason not to quote a single corpus/config number on its own.
 
 Reproduce
 +++++++++
