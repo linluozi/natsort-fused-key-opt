@@ -1,23 +1,24 @@
 natsort
 =======
 
-.. image:: https://img.shields.io/pypi/v/natsort.svg
-    :target: https://pypi.org/project/natsort/
+.. image:: https://github.com/linluozi/natsort-fused-key-opt/actions/workflows/tests.yml/badge.svg
+    :target: https://github.com/linluozi/natsort-fused-key-opt/actions/workflows/tests.yml
+    :alt: Tests
 
-.. image:: https://img.shields.io/pypi/pyversions/natsort.svg
-    :target: https://pypi.org/project/natsort/
+.. image:: https://github.com/linluozi/natsort-fused-key-opt/actions/workflows/code-quality.yml/badge.svg
+    :target: https://github.com/linluozi/natsort-fused-key-opt/actions/workflows/code-quality.yml
+    :alt: Code quality
 
-.. image:: https://img.shields.io/pypi/l/natsort.svg
-    :target: https://github.com/SethMMorton/natsort/blob/main/LICENSE
+.. image:: https://img.shields.io/badge/python-3.9%2B-c8892b.svg
+    :alt: Python 3.9+
 
-.. image:: https://github.com/SethMMorton/natsort/workflows/Tests/badge.svg
-    :target: https://github.com/SethMMorton/natsort/actions
+.. image:: https://img.shields.io/badge/license-MIT-c8892b.svg
+    :target: https://github.com/linluozi/natsort-fused-key-opt/blob/main/LICENSE
+    :alt: MIT
 
-.. image:: https://codecov.io/gh/SethMMorton/natsort/branch/main/graph/badge.svg
-    :target: https://codecov.io/gh/SethMMorton/natsort
-
-.. image:: https://img.shields.io/pypi/dw/natsort.svg
-    :target: https://pypi.org/project/natsort/
+.. image:: https://img.shields.io/badge/fork%20of-natsort%208.4.0-b4552f.svg
+    :target: https://github.com/SethMMorton/natsort
+    :alt: Fork of natsort 8.4.0
 
 Simple yet flexible natural sorting in Python.
 
@@ -192,6 +193,10 @@ and 1.25x taken together, so the fused loop is doing essentially all of the
 work; the pair contributes roughly a quarter on top of it. Both steps are kept
 because they are free at runtime (an ``isascii()`` test and a precomputed
 pattern), not because each is individually large.
+
+.. image:: assets/ablation.png
+    :alt: Speedup contributed by each mechanism, measured as adjacent-arm ratios
+    :width: 100%
 
 The shipped code matches the third variant (ratio 0.99, i.e. no measurable
 difference), so nothing beyond those three mechanisms is contributing - and

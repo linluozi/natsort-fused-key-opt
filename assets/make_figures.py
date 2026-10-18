@@ -373,6 +373,74 @@ def fig_pipeline() -> None:
     plt.close(fig)
 
 
+def fig_ablation() -> None:
+    """
+    Figure 5: which mechanism pays, measured as adjacent-arm ratios.
+
+    Adjacent pairs only. Comparing two arms that differ by one mechanism says
+    what that mechanism is worth; comparing each arm against upstream would
+    re-count every earlier step and make the last one look biggest.
+    """
+    data = json.loads((RES / "ablation.json").read_text(encoding="utf-8"))
+    pairs = data["pairs"]
+    steps = [
+        ("upstream__vs__V1_nfd_kept_full_regex", "Fuse the six stages\ninto one loop"),
+        (
+            "V1_nfd_kept_full_regex__vs__V2_nfd_skipped_full_regex",
+            "Skip NFD\non ASCII input",
+        ),
+        (
+            "V2_nfd_skipped_full_regex__vs__V3_nfd_skipped_reduced_regex",
+            "Drop the Unicode\nnumeral alternative",
+        ),
+    ]
+    ratios = [pairs[key]["left_over_right"] for key, _ in steps]
+    labels = [label for _, label in steps]
+
+    fig, ax = plt.subplots(figsize=(10.5, 4.9))
+    x = np.arange(len(steps))
+    ax.bar(x, ratios, 0.5, color=[AMBER, OLIVE, TERRACOTTA], edgecolor=PAPER, zorder=3)
+    for xi, value in zip(x, ratios, strict=True):
+        ax.text(
+            xi,
+            value + 0.03,
+            f"{value:.2f}x",
+            ha="center",
+            va="bottom",
+            fontsize=10,
+            color=INK,
+            fontweight="bold",
+        )
+    ax.axhline(1.0, color=MUTED, linewidth=1.0, linestyle="--", zorder=2)
+    ax.text(
+        len(steps) - 0.45,
+        1.02,
+        "no effect (1.0x)",
+        ha="right",
+        va="bottom",
+        fontsize=8,
+        color=MUTED,
+    )
+
+    combined = float(np.prod(ratios))
+    ax.set_xticks(x)
+    ax.set_xticklabels(labels, fontsize=9)
+    ax.set_ylim(0, max(ratios) * 1.25)
+    ax.set_ylabel("speedup of this step alone (x)")
+    ax.set_title(
+        "Which mechanism pays: adjacent-arm ratios, one change at a time\n"
+        f"{data['dataset']} corpus, n={data['n']};"
+        f" the three steps compound to {combined:.2f}x",
+        loc="left",
+        fontsize=12,
+        pad=14,
+    )
+    ax.grid(axis="y", color=MUTED, alpha=0.18, zorder=0)
+    fig.tight_layout()
+    fig.savefig(OUT / "ablation.png", dpi=170)
+    plt.close(fig)
+
+
 def main() -> None:
     """Write every figure used by the README."""
     OUT.mkdir(exist_ok=True)
@@ -381,6 +449,7 @@ def main() -> None:
     fig_absolute()
     fig_work()
     fig_pipeline()
+    fig_ablation()
 
 
 if __name__ == "__main__":
