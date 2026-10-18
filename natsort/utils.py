@@ -778,7 +778,6 @@ def _ascii_only_pattern(pattern: Pattern[str]) -> str | None:
     return None
 
 
-
 def parse_path_factory(str_split: StrParser) -> PathSplitter:
     """
     Create a function that will properly split and format a path.
@@ -1035,6 +1034,7 @@ def final_data_transform_factory(
 
 
 lower_function: StrToStr = cast("StrToStr", methodcaller("casefold"))
+
 
 # noinspection PyIncorrectDocstring
 def groupletters(x: str, _low: StrToStr = lower_function) -> str:

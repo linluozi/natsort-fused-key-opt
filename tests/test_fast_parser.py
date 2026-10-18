@@ -67,7 +67,7 @@ def test_ascii_pattern_keeps_numeric_body(alg: int) -> None:
 
 def test_ascii_pattern_returns_none_for_unexpected_shape() -> None:
     """A pattern without the numeral alternative is refused, not mangled."""
-    import re  # noqa: PLC0415 - only this test needs a hand-built pattern
+    import re
 
     assert utils._ascii_only_pattern(re.compile(r"(\d+)")) is None  # noqa: SLF001
 
@@ -264,7 +264,7 @@ def test_numeric_backend_is_whichever_natsort_selected() -> None:
     stand-ins. This asserts both configurations agree on the spellings where
     the two backends could differ.
     """
-    from natsort.compat.fastnumbers import try_float  # noqa: PLC0415
+    from natsort.compat.fastnumbers import try_float
 
     fused = natsort_keygen(alg=ns.REAL)
     for text in ("1.5", "-2e3", "12", "nan", "inf"):
