@@ -7,8 +7,10 @@ try:
     from natsort._version import __version__ as __version__
     from natsort._version import __version_tuple__ as __version_tuple__
 except ImportError:
+    # No generated version file (a source copy that was never built): the
+    # tuple keeps its type so the two branches do not disagree.
     __version__ = "unknown version"
-    __version_tuple__ = (0, 0, "unknown version")
+    __version_tuple__ = (0, 0, 0)
 from natsort.natsort import (
     NatsortKeyType,
     OSSortKeyType,

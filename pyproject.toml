@@ -62,7 +62,7 @@ mypy_path = "mypy_stubs"
 
 [tool.ruff]
 target-version = "py39"
-extend-exclude = ["build", "dist", "docs", "mypy_stubs", "_version.py"]
+extend-exclude = ["build", "dist", "docs", "mypy_stubs", "_version.py", "bench/.upstream"]
 
 [tool.ruff.format]
 docstring-code-format = true
@@ -98,6 +98,35 @@ ignore = [
 	"INP",      # implicit namespace package
 	"PLR2004",  # magic value comparison
 	"FBT",      # Boolean trap
+]
+# Benchmark and figure scripts are developer tooling, not library code: they
+# print progress, take untyped numbers from JSON, and are not importable
+# packages. Rules that only make sense for a published library are off here.
+"bench/**.py" = [
+	"ANN",     # annotations are unnecessary for throwaway measurement code
+	"T201",    # printing progress is the point
+	"FBT",     # boolean flags keep call sites readable
+	"D",       # docstrings on every helper add noise here
+	"PTH",     # os.path is fine for scripts that never leave the repo
+	"CPY",     # no copyright header on tooling
+	"INP",     # not a package
+	"PLR0913",
+	"PLR0915",
+	"PLR0917",
+	"PLR0911",
+	"S",       # randomness and asserts are fine in a benchmark
+	"PLC0415",  # imports inside helpers keep optional deps optional
+	"SLF",
+]
+"assets/**.py" = [
+	"ANN",
+	"T201",
+	"FBT",
+	"PTH",
+	"CPY",
+	"INP",
+	"PLR0913",
+	"PLR0917",
 ]
 "dev/bump.py" = [
 	"S603",     # validate input to subprocess.run

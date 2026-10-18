@@ -1,4 +1,5 @@
-"""Ablation: which part of the fusion actually pays?
+"""
+Ablation: which part of the fusion actually pays?
 
 Benchmarks variants of the key builder so each mechanism is attributed instead
 of asserted:
@@ -29,7 +30,7 @@ from functools import partial
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
-from harness import (  # noqa: E402
+from harness import (
     calibrate,
     dataset,
     dump,
@@ -102,8 +103,12 @@ def main() -> int:
     ref = up.natsort_keygen()
     variants = {
         "V1_nfd_kept_full_regex": build_variant(skip_nfd=False, reduced_pattern=False),
-        "V2_nfd_skipped_full_regex": build_variant(skip_nfd=True, reduced_pattern=False),
-        "V3_nfd_skipped_reduced_regex": build_variant(skip_nfd=True, reduced_pattern=True),
+        "V2_nfd_skipped_full_regex": build_variant(
+            skip_nfd=True, reduced_pattern=False
+        ),
+        "V3_nfd_skipped_reduced_regex": build_variant(
+            skip_nfd=True, reduced_pattern=True
+        ),
         "shipped": opt.natsort_keygen(),
     }
     for name, fn in variants.items():
@@ -124,14 +129,10 @@ def main() -> int:
                 "right_us": r["b_median"] / len(data) * 1e6,
                 "left_over_right": r["ratio_median"],
             }
-            print(
-                f"{left:30s} vs {right:30s} {r['ratio_median']:5.2f}x "
-                f"({r['a_median'] / len(data) * 1e6:5.2f} vs "
-                f"{r['b_median'] / len(data) * 1e6:5.2f} us)",
-                flush=True,
-            )
     dump(
-        os.path.join(os.path.dirname(os.path.abspath(__file__)), "results", "ablation.json"),
+        os.path.join(
+            os.path.dirname(os.path.abspath(__file__)), "results", "ablation.json"
+        ),
         {"dataset": "filenames", "n": len(data), "pairs": pairs},
     )
     return 0

@@ -1,4 +1,5 @@
-"""Deterministic work counters: no clocks, only counts.
+"""
+Deterministic work counters: no clocks, only counts.
 
 Clock-based speedups are noisy (see the A/A control). These counters measure
 the work the implementation performs, which is stable across runs and makes
@@ -21,7 +22,7 @@ import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
-from harness import DATASETS, configs, dataset, dump, load_arm  # noqa: E402
+from harness import configs, dataset, dump, load_arm
 
 WATCHED = {
     "unicodedata.normalize",
@@ -36,7 +37,7 @@ def count_calls(fn, data):
     """Profile *fn* over *data* and return call counts grouped by function."""
     counts: dict[str, int] = {}
 
-    def prof(frame, event, arg):
+    def prof(frame, event, _arg) -> None:
         if event != "call":
             return
         code = frame.f_code
@@ -74,16 +75,18 @@ def main() -> int:
                 "python_calls_upstream": sum(cu.values()),
                 "python_calls_optimised": sum(co.values()),
                 "components": components,
-                "breakdown_upstream": dict(sorted(cu.items(), key=lambda kv: -kv[1])[:6]),
-                "breakdown_optimised": dict(sorted(co.items(), key=lambda kv: -kv[1])[:6]),
+                "breakdown_upstream": dict(
+                    sorted(cu.items(), key=lambda kv: -kv[1])[:6]
+                ),
+                "breakdown_optimised": dict(
+                    sorted(co.items(), key=lambda kv: -kv[1])[:6]
+                ),
             }
             rows.append(row)
-            print(
-                f"{ds:10s} {label:10s} python calls {row['python_calls_upstream']:7d} -> "
-                f"{row['python_calls_optimised']:7d}  ({row['python_calls_upstream'] / row['python_calls_optimised']:.2f}x fewer)"
-            )
     dump(
-        os.path.join(os.path.dirname(os.path.abspath(__file__)), "results", "work_count.json"),
+        os.path.join(
+            os.path.dirname(os.path.abspath(__file__)), "results", "work_count.json"
+        ),
         {"rows": rows},
     )
     return 0

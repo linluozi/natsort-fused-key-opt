@@ -1,4 +1,5 @@
-"""Interleaved A/B benchmark: pristine upstream vs optimised key builder.
+"""
+Interleaved A/B benchmark: pristine upstream vs optimised key builder.
 
 Reported numbers are per-call medians of per-round ratios (see harness.py for
 why). The A/A control in ``aa_control.json`` bounds what counts as signal:
@@ -12,7 +13,7 @@ import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
-from harness import (  # noqa: E402
+from harness import (
     DATASETS,
     calibrate,
     configs,
@@ -21,7 +22,6 @@ from harness import (  # noqa: E402
     interleaved,
     load_arm,
     quiet_gc,
-    timed,
 )
 
 ROUNDS = 9
@@ -64,14 +64,11 @@ def main() -> int:
                 "iters_optimised": ib,
             }
             rows.append(row)
-            print(
-                f"{ds:10s} {label:10s} {per_call_up*1e6:7.2f} -> {per_call_opt*1e6:6.2f} us  "
-                f"{r['ratio_median']:5.2f}x  [{r['ratio_min']:4.2f},{r['ratio_max']:4.2f}]",
-                flush=True,
-            )
 
     dump(
-        os.path.join(os.path.dirname(os.path.abspath(__file__)), "results", "bench_key.json"),
+        os.path.join(
+            os.path.dirname(os.path.abspath(__file__)), "results", "bench_key.json"
+        ),
         {"rounds": ROUNDS, "rows": rows},
     )
     return 0

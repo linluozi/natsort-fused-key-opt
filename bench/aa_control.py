@@ -1,4 +1,5 @@
-"""A/A null control: two byte-identical copies must produce ratio ~1.0.
+"""
+A/A null control: two byte-identical copies must produce ratio ~1.0.
 
 This is the calibration that decides how large an effect has to be before it is
 worth reporting. Run it before believing any A/B number.
@@ -17,7 +18,7 @@ import tempfile
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
-from harness import (  # noqa: E402
+from harness import (
     DATASETS,
     REPO,
     calibrate,
@@ -47,22 +48,24 @@ def main() -> int:
         clone(arm_b)
 
         sys.path.insert(0, arm_a)
-        import natsort as A  # noqa: PLC0415
+        import natsort as first
 
         sys.path.remove(arm_a)
-        for mod in [m for m in sys.modules if m == "natsort" or m.startswith("natsort.")]:
+        for mod in [
+            m for m in sys.modules if m == "natsort" or m.startswith("natsort.")
+        ]:
             del sys.modules[mod]
         sys.path.insert(0, arm_b)
-        import natsort as B  # noqa: PLC0415
+        import natsort as second
 
         sys.path.remove(arm_b)
 
         rows = []
         for ds in DATASETS:
             data = dataset(ds)
-            for label, alg in configs(A.ns):
-                fa = A.natsort_keygen(alg=alg)
-                fb = B.natsort_keygen(alg=alg)
+            for label, alg in configs(first.ns):
+                fa = first.natsort_keygen(alg=alg)
+                fb = second.natsort_keygen(alg=alg)
 
                 def arm_1(f=fa, d=data):
                     return [f(s) for s in d]
@@ -78,7 +81,7 @@ def main() -> int:
                     f"[{r['ratio_min']:.4f},{r['ratio_max']:.4f}]",
                     flush=True,
                 )
-        ratios = sorted(r["ratio_median"] for r in rows)
+        ratios = sorted(row["ratio_median"] for row in rows)
         print(
             "AA median",
             round(ratios[len(ratios) // 2], 4),

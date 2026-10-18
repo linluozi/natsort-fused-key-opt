@@ -1,4 +1,5 @@
-"""Shared benchmark harness for the fused key builder.
+"""
+Shared benchmark harness for the fused key builder.
 
 Design rules (learned the hard way - see README "Methodology"):
 
@@ -30,8 +31,8 @@ import sys
 import time
 from typing import Callable
 
-HERE = os.path.dirname(os.path.abspath(__file__))       # <repo>/bench
-REPO = os.path.dirname(HERE)                            # <repo>
+HERE = os.path.dirname(os.path.abspath(__file__))  # <repo>/bench
+REPO = os.path.dirname(HERE)  # <repo>
 
 # Where the reference (pristine) implementation may live. Only explicit
 # locations are searched: guessing a sibling directory would let a copy of this
@@ -39,8 +40,8 @@ REPO = os.path.dirname(HERE)                            # <repo>
 # that compares a tree with itself always passes.
 REFERENCE_ENV = "NATSORT_UPSTREAM"
 REFERENCE_CANDIDATES = (
-    os.path.join(HERE, ".upstream"),                     # pip install --target
-    os.path.join(REPO, "upstream"),                      # vendored copy
+    os.path.join(HERE, ".upstream"),  # pip install --target
+    os.path.join(REPO, "upstream"),  # vendored copy
 )
 
 
@@ -68,19 +69,21 @@ def arm_path(name: str) -> str:
     if name in {"self", "work", "."}:
         return REPO
     if name != "upstream":
-        raise SystemExit(f"unknown arm {name!r}; use 'self' or 'upstream'")
+        msg = f"unknown arm {name!r}; use 'self' or 'upstream'"
+        raise SystemExit(msg)
 
     env = os.environ.get(REFERENCE_ENV)
     candidates = (env,) if env else REFERENCE_CANDIDATES
     for candidate in candidates:
         if candidate and os.path.isdir(os.path.join(candidate, "natsort")):
             return candidate
-    raise SystemExit(
+    msg = (
         "reference implementation not found.\n"
         "Fetch it first, then re-run:\n"
         "    pip install --no-deps --target bench/.upstream natsort==8.4.0\n"
         f"or point ${REFERENCE_ENV} at a directory containing natsort/."
     )
+    raise SystemExit(msg)
 
 
 def load_arm(name: str) -> object:
@@ -103,46 +106,49 @@ def load_arm(name: str) -> object:
 # pure words measures the splitter, not the numeric conversion.
 # --------------------------------------------------------------------------
 
+
 def dataset(name: str, n: int = 2000) -> list[str]:
     import random
     import string
 
     rnd = random.Random(20261018)
-    if name == "version":            # version strings, mixed int segments
+    text_ratio = 0.7  # fraction of characters that are letters, not digits
+    if name == "version":  # version strings, mixed int segments
         return [
             f"pkg-{rnd.randint(0, 40)}.{rnd.randint(0, 30)}.{rnd.randint(0, 99)}"
             for _ in range(n)
         ]
-    if name == "filenames":          # realistic filenames: text+numeric mix
+    if name == "filenames":  # realistic filenames: text+numeric mix
         out = []
         for _ in range(n):
             body = "".join(
                 rnd.choice(string.ascii_lowercase)
-                if rnd.random() < 0.7
+                if rnd.random() < text_ratio
                 else str(rnd.randint(0, 9999))
                 for _ in range(rnd.randint(4, 10))
             )
             out.append(f"{body}_{rnd.randint(0, 999)}.txt")
         return out
-    if name == "words":              # no digits at all: splitter-only workload
+    if name == "words":  # no digits at all: splitter-only workload
         return [
             "".join(rnd.choice(string.ascii_lowercase) for _ in range(12))
             for _ in range(n)
         ]
-    if name == "numbers":            # pure integers as strings
-        return [str(rnd.randint(0, 10**rnd.randint(1, 12))) for _ in range(n)]
-    if name == "floats":             # floats, exercises the float path
+    if name == "numbers":  # pure integers as strings
+        return [str(rnd.randint(0, 10 ** rnd.randint(1, 12))) for _ in range(n)]
+    if name == "floats":  # floats, exercises the float path
         return [f"{rnd.uniform(-1e6, 1e6):.6g}" for _ in range(n)]
-    if name == "unicode":            # unicode digits + accents (NFD matters)
+    if name == "unicode":  # unicode digits + accents (NFD matters)
         return [
             f"第{rnd.randint(0, 500)}章_café_{rnd.randint(0, 99)}.md" for _ in range(n)
         ]
-    if name == "longpath":           # long strings with many components
+    if name == "longpath":  # long strings with many components
         out = []
         for _ in range(max(1, n // 10)):
             out.append(
                 "/".join(
-                    f"dir{rnd.randint(0, 99)}/file{rnd.randint(0, 999)}_v{rnd.randint(0, 9)}"
+                    f"dir{rnd.randint(0, 99)}"
+                    f"/file{rnd.randint(0, 999)}_v{rnd.randint(0, 9)}"
                     for _ in range(6)
                 )
             )

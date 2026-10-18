@@ -1,4 +1,5 @@
-"""End-to-end benchmark of ``natsorted`` / ``nsorted`` style calls.
+"""
+End-to-end benchmark of ``natsorted`` / ``nsorted`` style calls.
 
 This is the number a user actually experiences: the key function is only a
 means to that end. 5000-element lists keep the comparison step meaningful
@@ -13,7 +14,7 @@ import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
-from harness import (  # noqa: E402
+from harness import (
     calibrate,
     dump,
     interleaved,
@@ -28,12 +29,17 @@ def main() -> int:
     quiet_gc()
     up = load_arm("upstream")
     opt = load_arm("self")
-    from harness import dataset  # noqa: PLC0415
+    from harness import dataset
 
     rows = []
     for ds in CASES:
         data = dataset(ds, 5000)
-        for label, alg in [("INT", 0), ("REAL", up.ns.REAL), ("IGNORECASE", up.ns.IGNORECASE)]:
+        for label, alg in [
+            ("INT", 0),
+            ("REAL", up.ns.REAL),
+            ("IGNORECASE", up.ns.IGNORECASE),
+        ]:
+
             def a(d=data, al=alg):
                 return up.natsorted(d, alg=al)
 
@@ -56,13 +62,10 @@ def main() -> int:
                     "speedup_max": r["ratio_max"],
                 }
             )
-            print(
-                f"{ds:10s} {label:10s} {r['a_median']*1e3:7.2f} -> {r['b_median']*1e3:6.2f} ms  "
-                f"{r['ratio_median']:5.2f}x  [{r['ratio_min']:4.2f},{r['ratio_max']:4.2f}]",
-                flush=True,
-            )
     dump(
-        os.path.join(os.path.dirname(os.path.abspath(__file__)), "results", "bench_e2e.json"),
+        os.path.join(
+            os.path.dirname(os.path.abspath(__file__)), "results", "bench_e2e.json"
+        ),
         {"rows": rows},
     )
     return 0
