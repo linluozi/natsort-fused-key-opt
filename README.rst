@@ -92,7 +92,7 @@ Results
 +++++++
 
 Across the 24 ASCII dataset/algorithm cells the per-cell median speedup runs
-from 1.41x to 6.24x, with a median cell of 1.75x. The bottom of that range sits
+from 1.41x to 6.24x, with a median cell of 1.84x. The bottom of that range sits
 close to this machine's noise floor, so the reliable claim is "roughly 1.5x to
 6x depending on the corpus". The non-ASCII corpus is unchanged by design and is
 excluded from the range - see the methodology note below for why it is reported
