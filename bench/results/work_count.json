@@ -1,0 +1,126 @@
+{
+  "rows": [
+    {
+      "dataset": "filenames",
+      "config": "INT",
+      "python_calls_upstream": 15103,
+      "python_calls_optimised": 1500,
+      "components": 3102,
+      "breakdown_upstream": {
+        "utils.py:sep_inserter": 3602,
+        "fastnumbers.py:<genexpr>": 3434,
+        "fake_fastnumbers.py:fast_int": 2934,
+        "fastnumbers.py:<lambda>": 1633,
+        "utils.py:_no_op": 1500,
+        "utils.py:func": 1000
+      },
+      "breakdown_optimised": {
+        "utils.py:natsort_key": 500,
+        "utils.py:func": 500,
+        "utils.py:parse": 500
+      }
+    },
+    {
+      "dataset": "filenames",
+      "config": "REAL",
+      "python_calls_upstream": 15054,
+      "python_calls_optimised": 3126,
+      "components": 3088,
+      "breakdown_upstream": {
+        "utils.py:sep_inserter": 3588,
+        "fastnumbers.py:<genexpr>": 3420,
+        "fake_fastnumbers.py:fast_float": 2920,
+        "fastnumbers.py:<lambda>": 1626,
+        "utils.py:_no_op": 1500,
+        "utils.py:func": 1000
+      },
+      "breakdown_optimised": {
+        "utils.py:maybe_number": 1626,
+        "utils.py:natsort_key": 500,
+        "utils.py:func": 500,
+        "utils.py:parse": 500
+      }
+    },
+    {
+      "dataset": "version",
+      "config": "INT",
+      "python_calls_upstream": 15000,
+      "python_calls_optimised": 1500,
+      "components": 3000,
+      "breakdown_upstream": {
+        "utils.py:sep_inserter": 3500,
+        "fastnumbers.py:<genexpr>": 3500,
+        "fake_fastnumbers.py:fast_int": 3000,
+        "utils.py:_no_op": 1500,
+        "fastnumbers.py:<lambda>": 1500,
+        "utils.py:func": 1000
+      },
+      "breakdown_optimised": {
+        "utils.py:natsort_key": 500,
+        "utils.py:func": 500,
+        "utils.py:parse": 500
+      }
+    },
+    {
+      "dataset": "version",
+      "config": "REAL",
+      "python_calls_upstream": 10000,
+      "python_calls_optimised": 2000,
+      "components": 2000,
+      "breakdown_upstream": {
+        "utils.py:sep_inserter": 2500,
+        "fastnumbers.py:<genexpr>": 2000,
+        "utils.py:_no_op": 1500,
+        "fake_fastnumbers.py:fast_float": 1500,
+        "utils.py:func": 1000,
+        "utils.py:natsort_key": 500
+      },
+      "breakdown_optimised": {
+        "utils.py:natsort_key": 500,
+        "utils.py:func": 500,
+        "utils.py:parse": 500,
+        "utils.py:maybe_number": 500
+      }
+    },
+    {
+      "dataset": "numbers",
+      "config": "INT",
+      "python_calls_upstream": 6500,
+      "python_calls_optimised": 1500,
+      "components": 1000,
+      "breakdown_upstream": {
+        "utils.py:_no_op": 1500,
+        "utils.py:sep_inserter": 1500,
+        "utils.py:func": 1000,
+        "fastnumbers.py:<genexpr>": 1000,
+        "utils.py:natsort_key": 500,
+        "fastnumbers.py:try_int": 500
+      },
+      "breakdown_optimised": {
+        "utils.py:natsort_key": 500,
+        "utils.py:func": 500,
+        "utils.py:parse": 500
+      }
+    },
+    {
+      "dataset": "numbers",
+      "config": "REAL",
+      "python_calls_upstream": 6500,
+      "python_calls_optimised": 1500,
+      "components": 1000,
+      "breakdown_upstream": {
+        "utils.py:_no_op": 1500,
+        "utils.py:sep_inserter": 1500,
+        "utils.py:func": 1000,
+        "fastnumbers.py:<genexpr>": 1000,
+        "utils.py:natsort_key": 500,
+        "fastnumbers.py:try_float": 500
+      },
+      "breakdown_optimised": {
+        "utils.py:natsort_key": 500,
+        "utils.py:func": 500,
+        "utils.py:parse": 500
+      }
+    }
+  ]
+}

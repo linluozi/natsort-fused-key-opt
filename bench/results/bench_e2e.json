@@ -1,0 +1,184 @@
+{
+  "rows": [
+    {
+      "dataset": "filenames",
+      "config": "INT",
+      "n_items": 5000,
+      "upstream_ms": 30.57730000000447,
+      "optimised_ms": 18.042400000013004,
+      "speedup_median": 1.5410588391608249,
+      "speedup_min": 1.398062272755899,
+      "speedup_max": 2.2157663031089934
+    },
+    {
+      "dataset": "filenames",
+      "config": "REAL",
+      "n_items": 5000,
+      "upstream_ms": 58.74930000027234,
+      "optimised_ms": 22.58949999941251,
+      "speedup_median": 2.6007348547688194,
+      "speedup_min": 2.3552624379385914,
+      "speedup_max": 2.9606843893829464
+    },
+    {
+      "dataset": "filenames",
+      "config": "IGNORECASE",
+      "n_items": 5000,
+      "upstream_ms": 30.220599999665865,
+      "optimised_ms": 19.578700000238314,
+      "speedup_median": 1.5699491043105773,
+      "speedup_min": 1.1257539506147176,
+      "speedup_max": 2.0010879169397815
+    },
+    {
+      "dataset": "version",
+      "config": "INT",
+      "n_items": 5000,
+      "upstream_ms": 29.57539999988512,
+      "optimised_ms": 19.08110000022134,
+      "speedup_median": 1.7771826571703526,
+      "speedup_min": 1.2363398693227161,
+      "speedup_max": 2.1328071662400094
+    },
+    {
+      "dataset": "version",
+      "config": "REAL",
+      "n_items": 5000,
+      "upstream_ms": 31.03940000073635,
+      "optimised_ms": 14.543899999807763,
+      "speedup_median": 2.006325303492736,
+      "speedup_min": 1.7057145840830914,
+      "speedup_max": 2.813736008905608
+    },
+    {
+      "dataset": "version",
+      "config": "IGNORECASE",
+      "n_items": 5000,
+      "upstream_ms": 28.06109999983164,
+      "optimised_ms": 15.280300000085845,
+      "speedup_median": 1.8621493033371115,
+      "speedup_min": 1.6363206969070028,
+      "speedup_max": 2.1630636668487155
+    },
+    {
+      "dataset": "words",
+      "config": "INT",
+      "n_items": 5000,
+      "upstream_ms": 13.84440000038012,
+      "optimised_ms": 8.484799999678216,
+      "speedup_median": 1.7186056905397524,
+      "speedup_min": 1.1757723106723368,
+      "speedup_max": 1.9380463392159548
+    },
+    {
+      "dataset": "words",
+      "config": "REAL",
+      "n_items": 5000,
+      "upstream_ms": 48.541999999542895,
+      "optimised_ms": 8.793299999979354,
+      "speedup_median": 5.520339349238269,
+      "speedup_min": 3.5500635493830925,
+      "speedup_max": 6.474467157688877
+    },
+    {
+      "dataset": "words",
+      "config": "IGNORECASE",
+      "n_items": 5000,
+      "upstream_ms": 13.961999999992258,
+      "optimised_ms": 8.098999999977726,
+      "speedup_median": 1.748462773230436,
+      "speedup_min": 1.2400743056630024,
+      "speedup_max": 2.147181799186946
+    },
+    {
+      "dataset": "numbers",
+      "config": "INT",
+      "n_items": 5000,
+      "upstream_ms": 11.939250000068569,
+      "optimised_ms": 9.554600000228675,
+      "speedup_median": 1.3093483766700253,
+      "speedup_min": 1.1142038424453973,
+      "speedup_max": 1.4920612108907665
+    },
+    {
+      "dataset": "numbers",
+      "config": "REAL",
+      "n_items": 5000,
+      "upstream_ms": 12.837599999784288,
+      "optimised_ms": 8.989999999812426,
+      "speedup_median": 1.413345299732452,
+      "speedup_min": 1.0666338218657259,
+      "speedup_max": 1.5243241554354825
+    },
+    {
+      "dataset": "numbers",
+      "config": "IGNORECASE",
+      "n_items": 5000,
+      "upstream_ms": 11.222099999940838,
+      "optimised_ms": 8.540700000139623,
+      "speedup_median": 1.3943596805426102,
+      "speedup_min": 0.8951259110023665,
+      "speedup_max": 1.5651479785932296
+    },
+    {
+      "dataset": "longpath",
+      "config": "INT",
+      "n_items": 500,
+      "upstream_ms": 8.068449999882432,
+      "optimised_ms": 5.366680000042834,
+      "speedup_median": 1.4543617604273982,
+      "speedup_min": 1.3489242149454443,
+      "speedup_max": 2.0313117234266023
+    },
+    {
+      "dataset": "longpath",
+      "config": "REAL",
+      "n_items": 500,
+      "upstream_ms": 30.798200000390352,
+      "optimised_ms": 8.958049999819195,
+      "speedup_median": 3.374912114301602,
+      "speedup_min": 2.6367523182891675,
+      "speedup_max": 4.075974309335234
+    },
+    {
+      "dataset": "longpath",
+      "config": "IGNORECASE",
+      "n_items": 500,
+      "upstream_ms": 8.47139999996216,
+      "optimised_ms": 5.859274999920672,
+      "speedup_median": 1.3951260403340549,
+      "speedup_min": 1.0853776893471434,
+      "speedup_max": 1.9791783113233283
+    },
+    {
+      "dataset": "unicode",
+      "config": "INT",
+      "n_items": 5000,
+      "upstream_ms": 27.371099999982107,
+      "optimised_ms": 31.40499999972235,
+      "speedup_median": 0.9261201170342253,
+      "speedup_min": 0.6237923315267447,
+      "speedup_max": 1.2075263742952906
+    },
+    {
+      "dataset": "unicode",
+      "config": "REAL",
+      "n_items": 5000,
+      "upstream_ms": 61.92650000048161,
+      "optimised_ms": 64.1356000005544,
+      "speedup_median": 0.9713895294155944,
+      "speedup_min": 0.7379277518971125,
+      "speedup_max": 1.1747627406840713
+    },
+    {
+      "dataset": "unicode",
+      "config": "IGNORECASE",
+      "n_items": 5000,
+      "upstream_ms": 28.702999999950407,
+      "optimised_ms": 31.831700000111596,
+      "speedup_median": 0.906669406138272,
+      "speedup_min": 0.7793936878516922,
+      "speedup_max": 1.0573556278642529
+    }
+  ]
+}

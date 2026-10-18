@@ -1,0 +1,284 @@
+{
+  "rows": [
+    {
+      "dataset": "version",
+      "config": "INT",
+      "ratio_median": 0.9930753023480146,
+      "ratio_min": 0.9767817093731109,
+      "ratio_max": 1.0572901495705664,
+      "a_median": 0.003598333333078093,
+      "b_median": 0.0036130833332208567,
+      "rounds": 7
+    },
+    {
+      "dataset": "version",
+      "config": "REAL",
+      "ratio_median": 1.0041580213533114,
+      "ratio_min": 0.9176581794043822,
+      "ratio_max": 1.0099653590954516,
+      "a_median": 0.0034849142856338794,
+      "b_median": 0.0034663428572717487,
+      "rounds": 7
+    },
+    {
+      "dataset": "version",
+      "config": "IGNORECASE",
+      "ratio_median": 1.0001593082014069,
+      "ratio_min": 0.9672622477579419,
+      "ratio_max": 1.078007056934627,
+      "a_median": 0.003665816666701479,
+      "b_median": 0.003661666666630481,
+      "rounds": 7
+    },
+    {
+      "dataset": "version",
+      "config": "NUMAFTER",
+      "ratio_median": 0.9938209314759904,
+      "ratio_min": 0.9416372256782355,
+      "ratio_max": 1.0252232924245832,
+      "a_median": 0.003736666666554811,
+      "b_median": 0.003723183333325627,
+      "rounds": 7
+    },
+    {
+      "dataset": "filenames",
+      "config": "INT",
+      "ratio_median": 0.9649094708617217,
+      "ratio_min": 0.8558849650023145,
+      "ratio_max": 1.0205214379819083,
+      "a_median": 0.0041168666666635545,
+      "b_median": 0.004266583333446761,
+      "rounds": 7
+    },
+    {
+      "dataset": "filenames",
+      "config": "REAL",
+      "ratio_median": 1.0092404588444648,
+      "ratio_min": 0.8920623760305941,
+      "ratio_max": 1.1028339667584384,
+      "a_median": 0.006014366666325562,
+      "b_median": 0.006185633333492054,
+      "rounds": 7
+    },
+    {
+      "dataset": "filenames",
+      "config": "IGNORECASE",
+      "ratio_median": 0.9520162978703536,
+      "ratio_min": 0.5732661786151876,
+      "ratio_max": 1.1267861435197097,
+      "a_median": 0.009613180000087596,
+      "b_median": 0.010762439999962226,
+      "rounds": 7
+    },
+    {
+      "dataset": "filenames",
+      "config": "NUMAFTER",
+      "ratio_median": 0.9792506137090463,
+      "ratio_min": 0.6302232966488106,
+      "ratio_max": 1.135956779944371,
+      "a_median": 0.010208549999333627,
+      "b_median": 0.011578300000110175,
+      "rounds": 7
+    },
+    {
+      "dataset": "words",
+      "config": "INT",
+      "ratio_median": 0.9965002614815168,
+      "ratio_min": 0.6819881546406653,
+      "ratio_max": 1.2998715309255349,
+      "a_median": 0.004335099999934755,
+      "b_median": 0.004350324999904842,
+      "rounds": 7
+    },
+    {
+      "dataset": "words",
+      "config": "REAL",
+      "ratio_median": 0.8453392284909872,
+      "ratio_min": 0.5878681555090475,
+      "ratio_max": 1.260175515052804,
+      "a_median": 0.004966625000179192,
+      "b_median": 0.00590714999998454,
+      "rounds": 7
+    },
+    {
+      "dataset": "words",
+      "config": "IGNORECASE",
+      "ratio_median": 0.9214608166945396,
+      "ratio_min": 0.6474253508287591,
+      "ratio_max": 1.0188801605041955,
+      "a_median": 0.0045340399999986404,
+      "b_median": 0.0058535749999464315,
+      "rounds": 7
+    },
+    {
+      "dataset": "words",
+      "config": "NUMAFTER",
+      "ratio_median": 1.3012512135759327,
+      "ratio_min": 0.8372862752492981,
+      "ratio_max": 1.5530818608703085,
+      "a_median": 0.007234100000005128,
+      "b_median": 0.007183699999950477,
+      "rounds": 7
+    },
+    {
+      "dataset": "numbers",
+      "config": "INT",
+      "ratio_median": 1.0441100657758196,
+      "ratio_min": 0.8427286889608863,
+      "ratio_max": 1.338878676190611,
+      "a_median": 0.006041133333080022,
+      "b_median": 0.005973299999823212,
+      "rounds": 7
+    },
+    {
+      "dataset": "numbers",
+      "config": "REAL",
+      "ratio_median": 0.9083088721009809,
+      "ratio_min": 0.7661986539676018,
+      "ratio_max": 1.7052520084872493,
+      "a_median": 0.006606366666649895,
+      "b_median": 0.006711299999854721,
+      "rounds": 7
+    },
+    {
+      "dataset": "numbers",
+      "config": "IGNORECASE",
+      "ratio_median": 0.9182319553278723,
+      "ratio_min": 0.8108427218852241,
+      "ratio_max": 1.1743284844654314,
+      "a_median": 0.0059896500001741515,
+      "b_median": 0.006235474999812141,
+      "rounds": 7
+    },
+    {
+      "dataset": "numbers",
+      "config": "NUMAFTER",
+      "ratio_median": 1.0344371730289887,
+      "ratio_min": 0.8089932896723776,
+      "ratio_max": 1.1577212621102133,
+      "a_median": 0.005588200000147481,
+      "b_median": 0.005558599999858416,
+      "rounds": 7
+    },
+    {
+      "dataset": "floats",
+      "config": "INT",
+      "ratio_median": 1.0206362586933873,
+      "ratio_min": 0.7639663605799542,
+      "ratio_max": 1.1369882375984202,
+      "a_median": 0.0060995249996267376,
+      "b_median": 0.006406199999522262,
+      "rounds": 7
+    },
+    {
+      "dataset": "floats",
+      "config": "REAL",
+      "ratio_median": 1.07686525250216,
+      "ratio_min": 0.8386706357411936,
+      "ratio_max": 1.3375475194893554,
+      "a_median": 0.006062233333068434,
+      "b_median": 0.005653725000229315,
+      "rounds": 7
+    },
+    {
+      "dataset": "floats",
+      "config": "IGNORECASE",
+      "ratio_median": 1.0202727900400106,
+      "ratio_min": 0.8894356193426423,
+      "ratio_max": 1.5482325632919873,
+      "a_median": 0.006543499999679625,
+      "b_median": 0.005899533332922147,
+      "rounds": 7
+    },
+    {
+      "dataset": "floats",
+      "config": "NUMAFTER",
+      "ratio_median": 0.9699192957320543,
+      "ratio_min": 0.6395219427084344,
+      "ratio_max": 1.4499215475207663,
+      "a_median": 0.005525800000214076,
+      "b_median": 0.0058175250001113454,
+      "rounds": 7
+    },
+    {
+      "dataset": "unicode",
+      "config": "INT",
+      "ratio_median": 1.005186166353993,
+      "ratio_min": 0.6654432159419159,
+      "ratio_max": 1.4070617400428236,
+      "a_median": 0.02522339999995893,
+      "b_median": 0.025158200000078068,
+      "rounds": 7
+    },
+    {
+      "dataset": "unicode",
+      "config": "REAL",
+      "ratio_median": 0.9313471278930227,
+      "ratio_min": 0.6852000305271376,
+      "ratio_max": 1.050453235147765,
+      "a_median": 0.04852570000002743,
+      "b_median": 0.05210269999952288,
+      "rounds": 7
+    },
+    {
+      "dataset": "unicode",
+      "config": "IGNORECASE",
+      "ratio_median": 0.911654324830858,
+      "ratio_min": 0.6950501012904514,
+      "ratio_max": 1.1109292612780652,
+      "a_median": 0.025311899998996523,
+      "b_median": 0.025356699999974808,
+      "rounds": 7
+    },
+    {
+      "dataset": "unicode",
+      "config": "NUMAFTER",
+      "ratio_median": 0.9065687567189465,
+      "ratio_min": 0.849541826718978,
+      "ratio_max": 1.441370901329442,
+      "a_median": 0.021469399998750305,
+      "b_median": 0.02071090000026743,
+      "rounds": 7
+    },
+    {
+      "dataset": "longpath",
+      "config": "INT",
+      "ratio_median": 0.9883147037483938,
+      "ratio_min": 0.7773737546846542,
+      "ratio_max": 1.8716458980760975,
+      "a_median": 0.0043366400001104925,
+      "b_median": 0.0046478600001137235,
+      "rounds": 7
+    },
+    {
+      "dataset": "longpath",
+      "config": "REAL",
+      "ratio_median": 0.943456037217251,
+      "ratio_min": 0.8330754319195164,
+      "ratio_max": 1.0804219497146086,
+      "a_median": 0.0047494250002273475,
+      "b_median": 0.004900666666799225,
+      "rounds": 7
+    },
+    {
+      "dataset": "longpath",
+      "config": "IGNORECASE",
+      "ratio_median": 0.968858463948254,
+      "ratio_min": 0.849472709918642,
+      "ratio_max": 1.4328613640595853,
+      "a_median": 0.004840319999857456,
+      "b_median": 0.004995899999812536,
+      "rounds": 7
+    },
+    {
+      "dataset": "longpath",
+      "config": "NUMAFTER",
+      "ratio_median": 0.8927964714824764,
+      "ratio_min": 0.591235858805481,
+      "ratio_max": 1.1117932700051274,
+      "a_median": 0.0031102999996619474,
+      "b_median": 0.0037747800000943244,
+      "rounds": 7
+    }
+  ]
+}
