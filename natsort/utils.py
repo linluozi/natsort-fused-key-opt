@@ -78,11 +78,11 @@ else:
 
 
 class SupportsDunderLT(Protocol):  # noqa: D101
-    def __lt__(self, __other: Any) -> bool: ...  # noqa: ANN401, D105, PYI063
+    def __lt__(self, __other: Any, /) -> bool: ...  # noqa: ANN401, D105
 
 
 class SupportsDunderGT(Protocol):  # noqa: D101
-    def __gt__(self, __other: Any) -> bool: ...  # noqa: ANN401, D105, PYI063
+    def __gt__(self, __other: Any, /) -> bool: ...  # noqa: ANN401, D105
 
 
 Sortable = Union[SupportsDunderLT, SupportsDunderGT]

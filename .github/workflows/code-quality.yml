@@ -24,11 +24,15 @@ jobs:
         with:
           python-version: '3.9'
 
-      # Pinned deliberately: the action otherwise installs whatever ruff was
-      # released last, so an unchanged tree starts failing when upstream adds a
-      # rule. The project's own requirements pin the version it was written for.
+      # Pinned deliberately. astral-sh/ruff-action installs whatever ruff was
+      # released last, so a tree nobody touched starts failing whenever ruff
+      # adds a rule (upstream's own CI is currently red for exactly that
+      # reason). The bound is the newest ruff this project is known to pass
+      # cleanly with: 0.11.13 reports zero findings on the unmodified upstream
+      # tree, while 0.13.3 and 0.17.1 do not. Raise it in its own commit that
+      # also fixes whatever the new rules report.
       - name: Install ruff
-        run: pip install "ruff==0.6.9"
+        run: pip install "ruff==0.11.13"
 
       - name: Check formatting
         run: ruff format --check .
@@ -48,7 +52,7 @@ jobs:
           python-version: '3.9'
 
       - name: Install ruff
-        run: pip install "ruff==0.6.9"
+        run: pip install "ruff==0.11.13"
 
       - name: Run ruff
         run: ruff check .
