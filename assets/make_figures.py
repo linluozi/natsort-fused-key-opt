@@ -130,7 +130,8 @@ def fig_speedup() -> None:
     ax.set_title(
         f"Key construction is {low:.1f}x - {high:.1f}x faster,"
         " depending on the corpus\n"
-        "median of 9 interleaved rounds; whiskers = min/max round ratio",
+        "median of 9 interleaved rounds; whiskers = min/max round ratio.\n"
+        "Cells near 1.0x are at this machine's noise floor (see README).",
         loc="left",
         fontsize=12,
         pad=14,
